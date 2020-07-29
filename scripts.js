@@ -1,8 +1,9 @@
 function ready() {
-    var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    var apiUrl = 'http://www.ringcentral.com/api/index.php';
-    var xhr = new XMLHttpRequest();
-    var getCountries = '?cmd=getCountries&typeResponse=json';
+    var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+        apiUrl = 'http://www.ringcentral.com/api/index.php',
+        getCountries = '?cmd=getCountries&typeResponse=json',
+        xhr = new XMLHttpRequest();
+
     xhr.open('GET', proxyUrl + apiUrl + getCountries, true);
     xhr.onload = function() {
         var status = xhr.status;
@@ -16,11 +17,12 @@ function ready() {
             option.disabled = true;
             option.selected = true;
             select.add( option );
+
             jsonResponse['result'].forEach(country => {
                 option = document.createElement( 'option' );
                 option.text = country['name'];
                 option.setAttribute('country_id', country['id']);
-                select.add( option );
+                select.add(option);
             });
         } else {
             alert('Failed to get countries from server');
@@ -30,26 +32,27 @@ function ready() {
     xhr.send();
 }
 
-function selectCity() {
-    var body = document.getElementById('cityStatTable');
+function selectCountry() {
+    var body = document.getElementById('countryStatTable'),
+        loader = document.getElementById('loader');
     body.innerHTML = "";
-    var loader = document.getElementById('loader');
     loader.style.display = '';
 
-    var selector = document.getElementById('countries');
-    var selectedCountry = selector.options[selector.selectedIndex];
+    var selector = document.getElementById('countries'),
+        selectedCountry = selector.options[selector.selectedIndex];
 
-    var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    var apiUrl = 'http://www.ringcentral.com/api/index.php';
-    var xhr = new XMLHttpRequest();
-    var getCountries = '?cmd=getInternationalRates&param[internationalRatesRequest][brandId]=1210&param[internationalRatesRequest][countryId]=' + selectedCountry.getAttribute("country_id") + '&param[internationalRatesRequest][tierId]=3311&typeResponse=json';
+    var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+        apiUrl = 'http://www.ringcentral.com/api/index.php',
+        getCountries = '?cmd=getInternationalRates&param[internationalRatesRequest][brandId]=1210&param[internationalRatesRequest][countryId]=' + selectedCountry.getAttribute("country_id") + '&param[internationalRatesRequest][tierId]=3311&typeResponse=json',
+        xhr = new XMLHttpRequest();
+
     xhr.open('GET', proxyUrl + apiUrl + getCountries, true);
     xhr.onload = function() {
         var status = xhr.status;
         if (status === 200) {
             var jsonResponse = JSON.parse(xhr.response.substring(0, xhr.response.length -1));
             var stats = jsonResponse['rates'][0]['value'][0];
-            var selectedCity = jsonResponse['rates'][0]['key']['name'];
+            var selectedCountry = jsonResponse['rates'][0]['key']['name'];
 
             var resultedArray = {};
 
@@ -57,6 +60,7 @@ function selectCity() {
                 var phoneType = type[0]['type'],
                     rate = type[0]['rate'],
                     codes = [];
+
                 type.forEach(areaStat => {
                     codes.push(parseInt(areaStat['areaCode'].toString() + (areaStat['phonePart'] ?? '')));
                 });
@@ -67,7 +71,7 @@ function selectCity() {
             });
 
             loader.style.display='none';
-            printResultTable(selectedCity, resultedArray)
+            printResultTable(selectedCountry, resultedArray)
         } else {
             alert('Failed to get countries from server');
             console.log(xhr);
@@ -87,28 +91,31 @@ function groupBy(list, keyGetter) {
             collection.push(item);
         }
     });
+
     return map;
 }
 
 function printResultTable(city, countryData) {
-    var body = document.getElementById('cityStatTable');
+    var body = document.getElementById('countryStatTable');
     body.innerHTML = "";
-    var tbl = document.createElement("table");
-    var tblBody = document.createElement("tbody");
+
+    var tbl = document.createElement("table"),
+        tblBody = document.createElement("tbody");
 
     tblBody = createBaseTableHeader(tblBody);
 
     Object.values(countryData).forEach(phoneType => {
-        var rows = [
+        var tableValues = [
             city,
             phoneType['type'],
             phoneType['codes'].join(', '),
             phoneType['rate'],
         ];
+
         var row = document.createElement("tr");
-        rows.forEach(tableValue => {
-            var cell = document.createElement("td");
-            var cellText = document.createTextNode(tableValue);
+        tableValues.forEach(tableValue => {
+            var cell = document.createElement("td"),
+                cellText = document.createTextNode(tableValue);
 
             cell.appendChild(cellText);
             row.appendChild(cell);
@@ -143,4 +150,4 @@ function createBaseTableHeader(tblBody) {
 }
 
 document.addEventListener("DOMContentLoaded", ready);
-document.addEventListener("change", selectCity);
+document.addEventListener("change", selectCountry);

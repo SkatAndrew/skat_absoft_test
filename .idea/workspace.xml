@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9daf9b6f-aacf-4ceb-b121-49dca2e1622a" name="Default Changelist" comment="" />
+    <list default="true" id="9daf9b6f-aacf-4ceb-b121-49dca2e1622a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +26,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1f0SRfLSx8kpn9uqLhTD43qPkyH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,7 +56,8 @@
       <updated>1595353509132</updated>
       <workItem from="1595353510310" duration="3979000" />
       <workItem from="1595437224553" duration="2116000" />
-      <workItem from="1595927275494" duration="18384000" />
+      <workItem from="1595927275494" duration="18695000" />
+      <workItem from="1596020448733" duration="855000" />
     </task>
     <servers />
   </component>
@@ -55,10 +65,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1595927301758">
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1596020549737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1920.5.1920.1040@0.0.1920.1040" timestamp="1595927301758" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1920.5.1920.1040@0.0.1920.1040" timestamp="1596020549737" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1595951948451">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
